@@ -1,10 +1,13 @@
 /* javascript lives here */
-"use strict";
+"use strict"; 
 
 console.log("App Started");
 
 // IIFE
 (function() {
+    /* INTERPOLATION */
+    console.info(`Page title: ${document.title}`); 
+    /* --------------------------------------------- */
     if(document.title == "Home") {
     // make a reference to H1 element on the index page
     // initialize my firstHeading variable
@@ -44,15 +47,29 @@ console.log("App Started");
     }
     } // end if Home
     else if (document.title == "Project") {
-        let myVariable = 10;
-        // named function
-        function myFunction() {
-            let myVariable = 20;
-        }
+        // step 1 - setup references to the elements you need to hook into
+        let hideButton = document.getElementById("hideButton");
+        let halfSizeButton = document.getElementById("halfSizeButton");
+        let treeQuarterSizeButton = document.getElementById("treeQuarterSizeButton");
+        let showButton = document.getElementById("showButton");
+        let firstProjectImg = document.getElementById("firstProjectImg");
 
-        // // alias for function
-        //                   // this part is the anonymous function
-        // let myFunction2 = function() {}
+        // step 2 - setup event listeners (register event listeners) for each elements
+        hideButton.addEventListener("click", function() {
+            firstProjectImg.style.display = 'none'; 
+        });
+
+        halfSizeButton.addEventListener("click", function() {
+            firstProjectImg.style.maxWidth = '50%'; 
+        });
+
+        treeQuarterSizeButton.addEventListener("click", function() {
+            firstProjectImg.style.maxWidth = '75%'; 
+        });
+
+        showButton.addEventListener("click", function() {
+            firstProjectImg.style.display = 'block'; 
+        });
     }
     else if (document.title == "Contact") {
 
