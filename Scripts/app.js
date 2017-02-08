@@ -47,6 +47,7 @@ console.log("App Started");
     }
     } // end if Home
     else if (document.title == "Project") {
+       
         // step 1 - setup references to the elements you need to hook into
         let hideButton = document.getElementById("hideButton");
         let halfSizeButton = document.getElementById("halfSizeButton");
@@ -54,22 +55,54 @@ console.log("App Started");
         let showButton = document.getElementById("showButton");
         let firstProjectImg = document.getElementById("firstProjectImg");
 
+         // OPTION 1 //
         // step 2 - setup event listeners (register event listeners) for each elements
-        hideButton.addEventListener("click", function() {
-            firstProjectImg.style.display = 'none'; 
-        });
+        // hideButton.addEventListener("click", function() {
+        //     firstProjectImg.style.display = 'none'; 
+        //     console.log(`width: `);
+        // });
 
-        halfSizeButton.addEventListener("click", function() {
-            firstProjectImg.style.maxWidth = '50%'; 
-        });
+        // halfSizeButton.addEventListener("click", function() {
+        //     firstProjectImg.style.maxWidth = '50%'; 
+        // });
 
-        treeQuarterSizeButton.addEventListener("click", function() {
-            firstProjectImg.style.maxWidth = '75%'; 
-        });
+        // treeQuarterSizeButton.addEventListener("click", function() {
+        //     firstProjectImg.style.maxWidth = '75%'; 
+        //     console.log(firstProjectImg.style.width);
+        // });
 
-        showButton.addEventListener("click", function() {
-            firstProjectImg.style.display = 'block'; 
-        });
+        // showButton.addEventListener("click", function() {
+        //     firstProjectImg.style.display = 'block'; 
+        // });
+
+        // OPTION 2 //
+        // step 2 - create one event listener
+        let buttonArray = [hideButton, halfSizeButton, treeQuarterSizeButton, showButton];
+        buttonArray.forEach(function(button) {
+            button.addEventListener("click", function(event) {
+                // store which button has been clicked in currentButton;
+                // let currentButton = button.getAttribute("id"); <-- one way to get the reference to the button
+                let currentButton = button;
+                switch (currentButton.getAttribute("id")) {
+                    case "hideButton":
+                        firstProjectImg.style.display = "none";
+                    break;
+                    case "halfSizeButton":
+                        firstProjectImg.style.display = "block";
+                        firstProjectImg.style.maxWidth = "50%";
+                    break;
+                    case "treeQuarterSizeButton":
+                        firstProjectImg.style.display = "block";
+                        firstProjectImg.style.maxWidth = "75%";
+                    break;
+                    case "showButton":
+                        firstProjectImg.style.display = "block";
+                        firstProjectImg.style.maxWidth = "100%";
+                    break;
+                }
+            });
+        }, this);
+
     }
     else if (document.title == "Contact") {
 

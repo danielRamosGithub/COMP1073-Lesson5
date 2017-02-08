@@ -7,3 +7,8 @@ body {
 .divider {
     margin-top: 10px;
 }
+
+#firstProjectImg {
+    /*max-height: 200px;*/
+    /*width: 300px;*/
+}
